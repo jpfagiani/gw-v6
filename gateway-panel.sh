@@ -247,95 +247,123 @@ def squid_reload():
 
 CSS = """
 *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
-:root{--bg:#0f1923;--bg2:#162030;--bg3:#1c2d3f;--bd:#2a3f52;--ac:#3b82f6;--acb:#1e3a5f;
-  --tx:#e2e8f0;--txs:#94a3b8;--txm:#64748b;--gn:#22c55e;--gnb:#14532d;
-  --rd:#ef4444;--rdb:#450a0a;--am:#f59e0b;--amb:#451a03}
-body{background:var(--bg);color:var(--tx);height:100vh;display:flex;flex-direction:column;overflow:hidden}
+body{background:#f4f6f8;color:#1a2a3a;height:100vh;display:flex;flex-direction:column;overflow:hidden}
 a{color:inherit;text-decoration:none}
-.tb{background:var(--bg2);border-bottom:1px solid var(--bd);height:48px;padding:0 20px;
-    display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.tb-brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500}
-.tb-user{display:flex;align-items:center;gap:5px;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);border-radius:20px;padding:3px 10px;font-size:11px;color:#93c5fd}
-.tb-brand i{font-size:20px;color:var(--ac)}
-.tb-right{display:flex;gap:8px}
-.tb-btn{display:flex;align-items:center;gap:4px;padding:5px 11px;border:1px solid var(--bd);
-        border-radius:6px;font-size:11px;color:var(--txs);cursor:pointer;background:transparent}
-.tb-btn:hover{background:var(--bg3)}
+/* TOPBAR */
+.tb{background:#1c3557;display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:48px;flex-shrink:0}
+.tb-brand{display:flex;align-items:center;gap:10px}
+.logo-box{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-box i{color:#fff;font-size:16px}
+.tb-title{color:#e8f0f8;font-size:11px;font-weight:500;line-height:1.3}
+.tb-sub{color:#7a9ec0;font-size:9px}
+.tb-right{display:flex;align-items:center;gap:6px}
+.pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.1);border:0.5px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 10px;color:#c0d8f0;font-size:11px}
+.pill i{font-size:12px}
+.tb-btn{display:flex;align-items:center;gap:3px;padding:4px 9px;border:0.5px solid rgba(255,255,255,.2);border-radius:6px;color:#a0c4e0;font-size:10px;cursor:pointer;background:transparent;text-decoration:none}
+.tb-btn:hover{background:rgba(255,255,255,.08)}
+.tb-btn i{font-size:12px}
+/* LAYOUT */
 .layout{display:flex;flex:1;overflow:hidden}
-.sb{width:210px;background:var(--bg2);border-right:1px solid var(--bd);padding:8px 0;overflow-y:auto;flex-shrink:0}
-.ns{font-size:9px;font-weight:600;color:var(--txm);text-transform:uppercase;letter-spacing:1px;padding:12px 16px 5px}
-.ni{display:flex;align-items:center;gap:9px;padding:8px 16px;color:var(--txs);cursor:pointer;
-    border-left:2px solid transparent;font-size:12px}
-.ni:hover{background:var(--bg3)}
-.ni.on{background:var(--acb);border-left-color:var(--ac);color:#fff;font-weight:500}
-.ni i{font-size:13px}
-.main{flex:1;padding:20px;overflow-y:auto;background:var(--bg)}
-.pt{font-size:15px;font-weight:500;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.pt i{font-size:18px;color:var(--ac)}
-.card{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:16px;margin-bottom:14px}
-.ct{font-size:10px;font-weight:500;color:var(--txs);text-transform:uppercase;letter-spacing:.6px;
-    margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+/* SIDEBAR */
+.sb{width:190px;min-width:190px;background:#fff;border-right:0.5px solid #d0d7de;display:flex;flex-direction:column;overflow:hidden;flex-shrink:0}
+.sb-hdr{padding:10px 12px 8px;border-bottom:0.5px solid #e8ecf0;display:flex;align-items:center;justify-content:space-between}
+.sb-hdr span{font-size:9px;font-weight:600;color:#7a8a9a;text-transform:uppercase;letter-spacing:.8px}
+.ns{font-size:9px;font-weight:600;color:#7a8a9a;text-transform:uppercase;letter-spacing:.8px;padding:12px 12px 5px}
+.sb-list{flex:1;overflow-y:auto;padding:4px 0}
+.ni{display:flex;align-items:center;gap:8px;padding:7px 12px;cursor:pointer;border-left:2px solid transparent;font-size:11px;color:#4a5a6a}
+.ni:hover{background:#f4f6f8}
+.ni.on{background:#e8f0fb;border-left-color:#1c5fad;color:#1c5fad;font-weight:500}
+.ni i{font-size:13px;color:#7a8a9a;flex-shrink:0}
+.ni.on i{color:#1c5fad}
+/* MAIN */
+.main{flex:1;padding:16px 20px;overflow-y:auto;background:#f4f6f8}
+.pt{font-size:14px;font-weight:500;margin-bottom:14px;display:flex;align-items:center;gap:8px;color:#1a2a3a}
+.pt i{font-size:17px;color:#1c5fad}
+/* CARDS */
+.card{background:#fff;border:0.5px solid #d0d7de;border-radius:8px;padding:14px;margin-bottom:12px}
+.ct{font-size:9px;font-weight:500;color:#7a8a9a;text-transform:uppercase;letter-spacing:.6px;
+    margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
 .ct span{display:flex;align-items:center;gap:6px}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.stat{background:var(--bg3);border:1px solid var(--bd);border-radius:8px;padding:12px}
-.sl{font-size:9px;color:var(--txm);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.ct i{font-size:12px;color:#7a8a9a}
+/* GRID */
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stat{background:#f4f6f8;border:0.5px solid #d0d7de;border-radius:7px;padding:11px}
+.sl{font-size:9px;color:#9aaab8;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+/* BADGES */
 .badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:500}
-.bon{background:var(--gnb);color:var(--gn)}.boff{background:var(--rdb);color:var(--rd)}
-.bwarn{background:var(--amb);color:var(--am)}
-.dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:2px}
-.don{background:var(--gn)}.doff{background:var(--rd)}
+.bon{background:#e8f5ec;color:#1a6a2a}
+.boff{background:#fef0f0;color:#a03030}
+.bwarn{background:#fff8e6;color:#8a5a00}
+/* DOTS */
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:3px}
+.don{background:#2a7a3a}.doff{background:#c04040}
+/* TABLES */
 table{width:100%;border-collapse:collapse;font-size:12px}
-th{background:var(--bg3);padding:7px 10px;text-align:left;font-size:10px;font-weight:500;
-   color:var(--txm);text-transform:uppercase;border-bottom:1px solid var(--bd)}
-td{padding:7px 10px;border-bottom:1px solid var(--bd);vertical-align:middle}
+th{background:#f4f6f8;padding:7px 10px;text-align:left;font-size:10px;font-weight:500;
+   color:#7a8a9a;text-transform:uppercase;letter-spacing:.4px;border-bottom:0.5px solid #d0d7de;position:sticky;top:0}
+td{padding:7px 10px;border-bottom:0.5px solid #eef0f2;color:#1a2a3a;vertical-align:middle}
 tr:last-child td{border-bottom:none}
-tr:hover td{background:var(--bg3)}
-.btn{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:6px;font-size:11px;
-     cursor:pointer;border:1px solid var(--bd);background:var(--bg3);color:var(--txs);font-family:inherit}
-.btn:hover{background:var(--bd)}
-.bp{background:var(--ac);border-color:var(--ac);color:#fff}.bp:hover{background:#2563eb}
-.bg{background:var(--gnb);border-color:var(--gn);color:var(--gn)}
-.br{background:var(--rdb);border-color:var(--rd);color:var(--rd)}
+tr:hover td{background:#f8f9fa}
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:5px;font-size:11px;
+     cursor:pointer;border:0.5px solid #c8d4e0;background:#fff;color:#4a5a6a;font-family:inherit}
+.btn:hover{background:#f4f6f8}
+.bp{background:#1c3557;border-color:#1c3557;color:#fff}.bp:hover{background:#162944}
+.bg{background:#e8f5ec;border-color:#9ad0aa;color:#2a6a3a}
+.br{background:#fef0f0;border-color:#f0b0b0;color:#a03030}
 .bs{padding:3px 8px;font-size:10px}
-input,textarea,select{width:100%;border:1px solid var(--bd);border-radius:6px;padding:8px 10px;
-    font-size:12px;color:var(--tx);background:var(--bg3);font-family:inherit;outline:none}
-input:focus,textarea:focus{border-color:var(--ac)}
-label{display:block;font-size:11px;font-weight:500;color:var(--txs);margin:10px 0 4px}
-pre{background:var(--bg3);border:1px solid var(--bd);border-radius:6px;padding:10px;
-    font-size:10px;color:var(--txs);overflow:auto;max-height:250px;white-space:pre-wrap}
-.mono{font-family:monospace;font-size:10px;color:var(--txs)}
-.tag{display:inline-flex;align-items:center;gap:3px;background:var(--acb);border:1px solid var(--bd);
-     border-radius:4px;padding:2px 7px;font-size:11px;color:var(--ac);margin:2px}
-.tag button{background:none;border:none;color:var(--rd);cursor:pointer;font-size:12px;padding:0;line-height:1}
-.ip-wrap{display:flex;flex-wrap:wrap;min-height:36px;background:var(--bg3);border:1px solid var(--bd);
-         border-radius:6px;padding:4px 6px;gap:2px;cursor:text;align-items:center}
+/* INPUTS */
+input,textarea,select{width:100%;border:0.5px solid #c8d4e0;border-radius:5px;padding:7px 9px;
+    font-size:12px;color:#1a2a3a;background:#fff;font-family:inherit;outline:none}
+input:focus,textarea:focus{border-color:#1c5fad}
+label{display:block;font-size:11px;font-weight:500;color:#5a6a7a;margin:10px 0 4px}
+/* PRE */
+pre{background:#f4f6f8;border:0.5px solid #d0d7de;border-radius:6px;padding:10px;
+    font-size:10px;color:#4a5a6a;overflow:auto;max-height:250px;white-space:pre-wrap;font-family:monospace}
+.mono{font-family:monospace;font-size:10px;color:#5a6a7a}
+/* TAGS */
+.tag{display:inline-flex;align-items:center;gap:3px;background:#e8f0fb;border:0.5px solid #b8d0f0;
+     border-radius:4px;padding:2px 7px;font-size:11px;color:#1c5fad;margin:2px}
+.tag button{background:none;border:none;color:#c04040;cursor:pointer;font-size:12px;padding:0;line-height:1}
+.ip-wrap{display:flex;flex-wrap:wrap;min-height:36px;background:#fff;border:0.5px solid #c8d4e0;
+         border-radius:5px;padding:4px 6px;gap:2px;cursor:text;align-items:center}
 .ip-wrap input{border:none;outline:none;padding:2px 4px;min-width:130px;flex:1;background:transparent}
-.tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
-.tab{padding:5px 12px;border-radius:6px;font-size:11px;cursor:pointer;border:1px solid var(--bd);
-     background:var(--bg3);color:var(--txs)}
-.tab.on{background:var(--ac);border-color:var(--ac);color:#fff}
+/* TABS */
+.tabs{display:flex;gap:5px;margin-bottom:10px;flex-wrap:wrap}
+.tab{padding:4px 11px;border-radius:5px;font-size:11px;cursor:pointer;border:0.5px solid #c8d4e0;
+     background:#fff;color:#5a6a7a}
+.tab.on{background:#1c3557;border-color:#1c3557;color:#fff}
 .hbar{display:flex;gap:8px;align-items:center;margin-bottom:10px}
 .hbar input{flex:1}
 .pg{display:none}.pg.on{display:block}
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:900;display:flex;
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:900;display:flex;
           align-items:center;justify-content:center;padding:16px}
-.modal{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:24px;
-       width:460px;max-width:100%;max-height:90vh;overflow-y:auto}
-.modal h3{font-size:14px;font-weight:500;margin-bottom:14px}
+.modal{background:#fff;border:0.5px solid #d0d7de;border-radius:10px;padding:24px;
+       width:460px;max-width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.12)}
+.modal h3{font-size:14px;font-weight:500;margin-bottom:14px;color:#1a2a3a}
 .mf{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
-.mf button{padding:7px 16px;border-radius:6px;font-size:12px;cursor:pointer;border:none;font-family:inherit}
-.mc{background:var(--bg3);color:var(--txs)}.mo{background:var(--ac);color:#fff}
-.alert{padding:10px 14px;border-radius:6px;font-size:12px;margin-bottom:12px;border:1px solid}
-.aok{background:var(--gnb);color:var(--gn);border-color:var(--gn)}
-.aerr{background:var(--rdb);color:var(--rd);border-color:var(--rd)}
+.mf button{padding:7px 16px;border-radius:5px;font-size:12px;cursor:pointer;border:none;font-family:inherit}
+.mc{background:#f4f6f8;color:#5a6a7a;border:0.5px solid #c8d4e0}
+.mo{background:#1c3557;color:#fff}
+/* ALERTS */
+.alert{padding:10px 14px;border-radius:6px;font-size:12px;margin-bottom:10px;border:0.5px solid}
+.aok{background:#e8f5ec;color:#1a5a2a;border-color:#9ad0aa}
+.aerr{background:#fef0f0;color:#a03030;border-color:#f0b0b0}
+/* TOAST */
 #toast{position:fixed;bottom:20px;right:20px;z-index:999;display:flex;flex-direction:column;gap:6px}
-.ti{padding:10px 14px;border-radius:8px;font-size:12px;min-width:220px;background:var(--bg2);
-    border:1px solid var(--bd);animation:si .2s ease}
-.ti.ok{border-left:3px solid var(--gn);color:var(--gn)}
-.ti.err{border-left:3px solid var(--rd);color:var(--rd)}
-.ti.warn{border-left:3px solid var(--am);color:var(--am)}
+.ti{padding:10px 14px;border-radius:8px;font-size:12px;min-width:220px;background:#fff;
+    border:0.5px solid #d0d7de;box-shadow:0 4px 12px rgba(0,0,0,.1);animation:si .2s ease}
+.ti.ok{border-left:3px solid #2a7a3a;color:#1a5a2a}
+.ti.err{border-left:3px solid #c04040;color:#a03030}
+.ti.warn{border-left:3px solid #c07820;color:#8a5a00}
 @keyframes si{from{transform:translateX(20px);opacity:0}to{opacity:1}}
+/* STATUSBAR */
+.statusbar{background:#fff;border-top:0.5px solid #d0d7de;padding:0 16px;height:26px;
+           display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.statusbar span{font-size:9px;color:#9aaab8}
+.st-on{display:flex;align-items:center;gap:4px;color:#2a7a3a}
 """
 
 BASE = r"""<!DOCTYPE html><html lang="pt-BR"><head>
@@ -345,58 +373,69 @@ BASE = r"""<!DOCTYPE html><html lang="pt-BR"><head>
 <style>{{ css }}</style></head><body>
 {% if logged %}
 <div class="tb">
-  <div class="tb-brand"><i class="ti ti-router"></i>Gateway CDPNI — Painel</div>
+  <div class="tb-brand">
+    <div class="logo-box"><i class="ti ti-router"></i></div>
+    <div>
+      <div class="tb-title">Gateway CDPNI — Painel de Administração</div>
+      <div class="tb-sub">{{ session.get("user","root") }}@gateway · {{ hora }}</div>
+    </div>
+  </div>
   <div class="tb-right">
     <a href="https://192.168.0.11" target="_blank" class="tb-btn"><i class="ti ti-external-link"></i>Portal Arquivos</a>
-    <span class="tb-user"><i class="ti ti-user-circle" style="font-size:13px"></i>{{ session.get("user","root") }}</span>
+    <span class="pill"><i class="ti ti-user-circle"></i>{{ session.get("user","root") }}</span>
     <a href="/logout" class="tb-btn"><i class="ti ti-logout"></i>Sair</a>
   </div>
 </div>
 <div class="layout">
   <div class="sb">
-    <div class="ns">Principal</div>
-    <a href="/?p=dash"   class="ni {{ 'on' if p=='dash'   }}"><i class="ti ti-dashboard"></i>Dashboard</a>
-    <a href="/?p=svc"    class="ni {{ 'on' if p=='svc'    }}"><i class="ti ti-settings-2"></i>Serviços</a>
-    <div class="ns">Proxy / Squid</div>
-    <a href="/?p=hor"    class="ni {{ 'on' if p=='hor'    }}"><i class="ti ti-clock"></i>Horários</a>
-    <a href="/?p=ips"    class="ni {{ 'on' if p=='ips'    }}"><i class="ti ti-network"></i>Grupos de IPs</a>
-    <a href="/?p=sites"  class="ni {{ 'on' if p=='sites'  }}"><i class="ti ti-world"></i>Listas de Sites</a>
-    <div class="ns">Rede</div>
-    <a href="/?p=nat"    class="ni {{ 'on' if p=='nat'    }}"><i class="ti ti-arrows-exchange"></i>NAT 1:1</a>
-    <a href="/?p=dns"    class="ni {{ 'on' if p=='dns'    }}"><i class="ti ti-dns"></i>DNS</a>
-    <div class="ns">Sistema</div>
-    <a href="/?p=logs"   class="ni {{ 'on' if p=='logs'   }}"><i class="ti ti-file-text"></i>Logs</a>
-    <a href="/?p=tools"  class="ni {{ 'on' if p=='tools'  }}"><i class="ti ti-tool"></i>Ferramentas</a>
-    <a href="/?p=passwd" class="ni {{ 'on' if p=='passwd' }}"><i class="ti ti-key"></i>Senha</a>
+    <div class="sb-hdr"><span>Menu</span><i class="ti ti-settings" style="font-size:13px"></i></div>
+    <div class="sb-list">
+      <div class="ns">Principal</div>
+      <a href="/?p=dash"   class="ni {{ 'on' if p=='dash'   }}"><i class="ti ti-dashboard"></i>Dashboard</a>
+      <a href="/?p=svc"    class="ni {{ 'on' if p=='svc'    }}"><i class="ti ti-settings-2"></i>Serviços</a>
+      <div class="ns">Proxy / Squid</div>
+      <a href="/?p=hor"    class="ni {{ 'on' if p=='hor'    }}"><i class="ti ti-clock"></i>Horários</a>
+      <a href="/?p=ips"    class="ni {{ 'on' if p=='ips'    }}"><i class="ti ti-network"></i>Grupos de IPs</a>
+      <a href="/?p=sites"  class="ni {{ 'on' if p=='sites'  }}"><i class="ti ti-world"></i>Listas de Sites</a>
+      <div class="ns">Rede</div>
+      <a href="/?p=nat"    class="ni {{ 'on' if p=='nat'    }}"><i class="ti ti-arrows-exchange"></i>NAT 1:1</a>
+      <a href="/?p=dns"    class="ni {{ 'on' if p=='dns'    }}"><i class="ti ti-dns"></i>DNS</a>
+      <div class="ns">Sistema</div>
+      <a href="/?p=logs"   class="ni {{ 'on' if p=='logs'   }}"><i class="ti ti-file-text"></i>Logs</a>
+      <a href="/?p=tools"  class="ni {{ 'on' if p=='tools'  }}"><i class="ti ti-tool"></i>Ferramentas</a>
+      <a href="/?p=passwd" class="ni {{ 'on' if p=='passwd' }}"><i class="ti ti-key"></i>Senha</a>
+    </div>
   </div>
   <div class="main">
     {% if msg %}<div class="alert {{ 'aok' if mt=='ok' else 'aerr' }}">{{ msg }}</div>{% endif %}
     {{ content|safe }}
   </div>
 </div>
+<div class="statusbar">
+  <span>CDPNI — Gateway de Controle de Acesso</span>
+  <span class="st-on"><span class="dot don"></span>{{ 'Horário Livre' if libre else 'Horário Restrito' }}</span>
+  <span>Gateway v1.0 · Python Flask</span>
+</div>
 {% else %}
-<div style="min-height:100vh;background:linear-gradient(135deg,#0a1628,#1c3557);display:flex;align-items:center;justify-content:center">
-<div style="background:#162030;border:1px solid #2a3f52;border-radius:14px;padding:40px;width:380px;box-shadow:0 20px 60px rgba(0,0,0,.5)">
-  <div style="text-align:center;margin-bottom:28px">
-    <div style="width:64px;height:64px;background:#1e3a5f;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px">
-      <i class="ti ti-router" style="font-size:28px;color:#3b82f6"></i>
+<div style="min-height:100vh;background:linear-gradient(135deg,#0d2340,#1c3557);display:flex;align-items:center;justify-content:center">
+<div style="background:#fff;border:0.5px solid #d0d7de;border-radius:12px;padding:36px;width:360px;box-shadow:0 16px 48px rgba(0,0,0,.25)">
+  <div style="text-align:center;margin-bottom:24px">
+    <div style="width:60px;height:60px;background:#1c3557;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:10px">
+      <i class="ti ti-router" style="font-size:26px;color:#fff"></i>
     </div>
-    <h1 style="font-size:16px;font-weight:600;color:#e2e8f0">Gateway CDPNI</h1>
-    <p style="font-size:12px;color:#64748b;margin-top:4px">Painel de Administração</p>
+    <h1 style="font-size:15px;font-weight:600;color:#1a2a3a">Gateway CDPNI</h1>
+    <p style="font-size:11px;color:#7a8a9a;margin-top:3px">Painel de Administração</p>
   </div>
-  {% if error %}<div class="alert aerr" style="margin-bottom:12px">{{ error }}</div>{% endif %}
+  {% if error %}<div class="alert aerr" style="margin-bottom:10px">{{ error }}</div>{% endif %}
   <form method="post" action="/login">
-    <label style="font-size:11px;color:#94a3b8;font-weight:500;display:block;margin-bottom:5px">Usuário</label>
-    <input type="text" name="user" value="root" autocomplete="username" required
-      style="width:100%;padding:11px 13px;font-size:14px;background:#1c2d3f;border:1px solid #2a3f52;border-radius:6px;color:#e2e8f0;font-family:inherit;outline:none;margin-bottom:10px">
-    <label style="font-size:11px;color:#94a3b8;font-weight:500;display:block;margin-bottom:5px">Senha</label>
-    <input type="password" name="pass" placeholder="••••••" autofocus required autocomplete="current-password"
-      style="width:100%;padding:11px 13px;font-size:14px;background:#1c2d3f;border:1px solid #3b82f6;border-radius:6px;color:#e2e8f0;font-family:inherit;outline:none">
-    <button type="submit" class="btn bp" style="width:100%;margin-top:16px;padding:11px;justify-content:center;font-size:13px">Entrar</button>
+    <label>Usuário</label>
+    <input type="text" name="user" value="root" autocomplete="username" required>
+    <label style="margin-top:10px">Senha</label>
+    <input type="password" name="pass" placeholder="••••••" autofocus required autocomplete="current-password">
+    <button type="submit" class="btn bp" style="width:100%;margin-top:14px;padding:10px;justify-content:center;font-size:13px">Entrar</button>
   </form>
-  <p style="text-align:center;font-size:10px;color:#334155;margin-top:20px;line-height:1.5">
-    Gateway Control Panel • Debian 13<br>
-    <span style="color:#1e3a5f">Use as credenciais do sistema Linux</span>
+  <p style="text-align:center;font-size:10px;color:#9aaab8;margin-top:16px;line-height:1.5">
+    Use as credenciais do sistema Linux
   </p>
 </div></div>
 {% endif %}
@@ -407,6 +446,7 @@ async function api(path,data,method='POST'){const r=await fetch(path,{method,hea
 </script>
 {{ scripts|safe }}
 </body></html>"""
+
 
 def render(p, content, scripts="", msg="", mt="ok"):
     from flask import render_template_string as rts
@@ -497,7 +537,7 @@ def index():
 <div class="card"><div class="ct"><span><i class="ti ti-clock"></i>Acesso agora</span></div>
   <span id="hst">Verificando...</span></div>"""
         scripts = """<script>fetch('/api/h_status').then(r=>r.json()).then(d=>{
-  document.getElementById('hst').innerHTML=`<span class="badge ${d.ok?'bon':'bwarn'}">${d.ok?'Horário Livre':'Horário Restrito'}</span> <span style="color:var(--txs);font-size:11px">${d.hora} — ${d.msg}</span>`;});</script>"""
+  document.getElementById('hst').innerHTML=`<span class="badge ${d.ok?'bon':'bwarn'}">${d.ok?'Horário Livre':'Horário Restrito'}</span> <span style="color:#5a6a7a;font-size:11px">${d.hora} — ${d.msg}</span>`;});</script>"""
 
     elif p == "svc":
         svcs = [("squid","Proxy + SSL Bump"),("named","DNS (BIND9) — named.service"),
@@ -530,9 +570,9 @@ async function svcLog(n){const r=await api('/api/svc_log',{name:n});document.get
         content = f"""<div class="pt"><i class="ti ti-clock"></i>Horários de Acesso</div>
 <div class="card"><div class="ct"><span>Horários livres (seg-sex)</span>
 <button class="btn bp" onclick="saveHor()">💾 Salvar e Aplicar</button></div>
-<p style="font-size:11px;color:var(--txm);margin-bottom:10px">Fora desses horários, IPs restritos são bloqueados. Formato: HH:MM-HH:MM</p>
+<p style="font-size:11px;color:#9aaab8;margin-bottom:10px">Fora desses horários, IPs restritos são bloqueados. Formato: HH:MM-HH:MM</p>
 <textarea id="hor-txt" rows="8" style="font-family:monospace">{htxt}</textarea>
-<div style="margin-top:8px;font-size:11px;color:var(--txm)">
+<div style="margin-top:8px;font-size:11px;color:#9aaab8">
   Sábado/domingo: sempre livre &nbsp;|&nbsp; Atual: <strong id="hstatus">—</strong>
 </div></div>"""
         scripts = """<script>
@@ -552,7 +592,7 @@ async function saveHor(){const r=await api('/api/horarios',{horarios:document.ge
             tags = "".join(f'<span class="tag">{ip}<button onclick="rmIp(\'{name}\',\'{ip}\')">×</button></span>' for ip in gdata[name])
             cards += f"""<div class="card"><div class="ct"><span>{label}</span>
 <button class="btn bp" onclick="saveGrp('{name}')">💾 Salvar</button></div>
-<p style="font-size:11px;color:var(--txm);margin-bottom:8px">{desc}</p>
+<p style="font-size:11px;color:#9aaab8;margin-bottom:8px">{desc}</p>
 <div class="ip-wrap" id="wrap-{name}" onclick="document.getElementById('inp-{name}').focus()">
 {tags}<input id="inp-{name}" placeholder="Ex: 192.168.0.50 (Enter para adicionar)"
 onkeydown="if(event.key==='Enter'){{addIp('{name}');event.preventDefault()}}">
@@ -603,11 +643,11 @@ async function saveTab(n){const r=await api('/api/sites',{name:n,content:documen
                 parts = line.split(None, 2)
                 if len(parts) >= 2:
                     entries.append({"int":parts[0],"ext":parts[1],"desc":parts[2] if len(parts)>2 else ""})
-        rows = "".join(f'<tr><td class="mono">{e["int"]}</td><td class="mono">{e["ext"]}</td><td style="color:var(--txs)">{e["desc"]}</td><td style="text-align:right"><button class="btn br bs" onclick="delNat(\'{e["int"]}\')">Remover</button></td></tr>' for e in entries)
+        rows = "".join(f'<tr><td class="mono">{e["int"]}</td><td class="mono">{e["ext"]}</td><td style="color:#5a6a7a">{e["desc"]}</td><td style="text-align:right"><button class="btn br bs" onclick="delNat(\'{e["int"]}\')">Remover</button></td></tr>' for e in entries)
         content = f"""<div class="pt"><i class="ti ti-arrows-exchange"></i>NAT 1:1</div>
 <div class="card"><div class="ct"><span>Entradas ativas</span><button class="btn bp" onclick="document.getElementById('natm').style.display='flex'">+ Adicionar</button></div>
 <table><thead><tr><th>IP Interno</th><th>IP Externo</th><th>Descrição</th><th></th></tr></thead>
-<tbody>{rows or '<tr><td colspan="4" style="text-align:center;color:var(--txm);padding:16px">Nenhuma entrada</td></tr>'}</tbody></table></div>
+<tbody>{rows or '<tr><td colspan="4" style="text-align:center;color:#9aaab8;padding:16px">Nenhuma entrada</td></tr>'}</tbody></table></div>
 <div id="natm" class="modal-bg" style="display:none"><div class="modal"><h3>Adicionar NAT 1:1</h3>
 <label>IP Interno</label><input id="ni" placeholder="192.168.0.50">
 <label>IP Externo (vazio = automático)</label><input id="ne" placeholder="10.14.29.50">
@@ -628,7 +668,7 @@ async function delNat(ip){if(!confirm('Remover NAT para '+ip+'?'))return;const r
                 zn, zf = m.group(1), m.group(2)
                 _, _, rc = run(f"named-checkzone {zn} {zf} 2>/dev/null")
                 zones.append((zn, zf, rc==0))
-        rows = "".join(f'<tr><td class="mono">{z}</td><td class="mono" style="color:var(--txm)">{f}</td><td><span class="badge {"bon" if ok else "boff"}">{("OK" if ok else "Erro")}</span></td></tr>' for z,f,ok in zones)
+        rows = "".join(f'<tr><td class="mono">{z}</td><td class="mono" style="color:#9aaab8">{f}</td><td><span class="badge {"bon" if ok else "boff"}">{("OK" if ok else "Erro")}</span></td></tr>' for z,f,ok in zones)
         content = f"""<div class="pt"><i class="ti ti-dns"></i>DNS</div>
 <div class="card"><div class="ct"><span>Testar resolução</span></div>
 <div class="hbar"><input id="dns-h" placeholder="Ex: new.cartoriosap.sp.gov.br"><button class="btn bp" onclick="testDns()">Testar</button></div>
